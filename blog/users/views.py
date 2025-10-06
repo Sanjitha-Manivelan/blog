@@ -6,6 +6,7 @@ from blog.models import User, BlogPost
 from blog.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 from blog.users.picture_handler import add_profile_pic
 
+
 users = Blueprint('users', __name__)
 
 @users.route('/register', methods=['GET', 'POST'])
