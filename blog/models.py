@@ -8,9 +8,7 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 class User(db.Model, UserMixin):
-
     __tablename__ = 'users'
-
     id = db.Column(db.Integer, primary_key = True)
     profile_image = db.Column(db.String(20), nullable=False, default='default_profile.png')
     email = db.Column(db.String(64), unique=True, index=True)
@@ -31,7 +29,6 @@ class User(db.Model, UserMixin):
 
 class BlogPost(db.Model):
     users = db.relationship(User)
-
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -42,7 +39,6 @@ class BlogPost(db.Model):
         self.title = title
         self.text = text
         self.user_id =user_id
-
 
     def __repr__(self):
         return f"Post Id: {self.id} --- Date: {self.date} --- Title: {self.title}"

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta chrset="UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>404 Not Found</title>
+        <style>
+            body{
+                background-color: #f9fafb;
+                color: #1f2937;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                margin: 0;
+            }
+            h1 {
+                font-size: 6rem;
+                color: #ef4444;
+                margin: 0;
+            }
+            h2 {
+                font-size: 2rem;
+                margin: 0.5rem 0;
+            }
+            p {
+                margin: 1rem 0;
+                font-size: 1.1rem;
+                color: #4b5563;
+            }
+            a {
+                background-color: #3b82f6;
+                color:white;
+                padding: 0.75rem 1.5rem;
+                border-radius: 8px;
+                text-decoration: none;
+                transition: background-color 0.2s;
+            }
+            a:hover {
+                background-color: #2563eb;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>Sorry this page doesn't exist</p>
+        <a herf="{{ url_for('base.html') }}">Go Back Home</a>
+    </body>
+</html>
