@@ -6,9 +6,13 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
+app.config['DEBUG'] = True
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'site.db')
+instance_path = os.path.join(basedir, 'instance')
+os.makedirs(instance_path, exist_ok=True)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'instance', 'site.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -28,3 +32,6 @@ app.register_blueprint(users)
 app.register_blueprint(blog_posts)
 app.register_blueprint(core)
 app.register_blueprint(error_pages)
+
+with app.app_context():
+    from blog.models import User, BlogPost
